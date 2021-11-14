@@ -18,6 +18,8 @@ const eqArrays = function (inputArray1, inputArray2) {
         }
       }
     }
+  } else {
+      response=undefined;
   }
   return response;
 };
