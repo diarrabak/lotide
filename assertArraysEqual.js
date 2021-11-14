@@ -30,7 +30,7 @@ const assertArraysEqual = function (inputArray1, inputArray2) {
     console.log(`🟡 🟡 🟡 Correct but arrays should not be empty!`);
   }
   else {
-    console.log(`🔴 🔴 🔴 Incorrect: ${inputArray1} !== ${inputArray1}`);
+    console.log(`🔴 🔴 🔴 Incorrect: ${inputArray1} !== ${inputArray2}`);
   }
 };
 

@@ -1,16 +1,27 @@
-//This function remove all the itemsToRemove array element from the source array
-const without = function (source, itemsToRemove) {
-  let newArray = source.slice(); //Just a copy otherwise the function will modify source itself
-  for (const element of itemsToRemove) {
-    //For each element to be removed, we check the source array to remove an occurrence
-    for (let j = 0; j < source.length; j++) {
-      if (source[j] === element) {
-        newArray.splice(j, 1); //Remove the itemsToRemove rom the output array
-      }
+//This function return the middle element(s) of the input array
+const middle = function (inputArray) {
+  let result = [];
+  if (inputArray.length > 2) {
+    if (inputArray.length % 2 === 0) {
+      //If the array has an even number of element, the middle will be two elements
+      let middleElemts = inputArray.slice(
+        inputArray.length / 2 - 1,
+        inputArray.length / 2 + 1
+      );
+      result.push(middleElemts[0], middleElemts[1]);
+    } else {
+      //Only one middle element for odd element number array
+      let middleElement = inputArray.slice(
+        Math.floor(inputArray.length / 2),
+        Math.floor(inputArray.length / 2) + 1
+      )[0];
+      result.push(middleElement);
     }
   }
-  return newArray;
+  return result;
 };
+
+
 
 //This function compares two arrays
 const eqArrays = function (inputArray1, inputArray2) {
@@ -49,16 +60,31 @@ const assertArraysEqual = function (inputArray1, inputArray2) {
 
 // TEST CODE SCENARIOS
 
-console.log(without(["Hello", "Bootcamp", "3"], ["Hello", "3"]));
 
-console.log(without(["Bootcamp", "Lighthouse Labs"], ["Bootcamp"]));
+//Testing the middle function
 
-console.log(without(["1", "2", "3"], [1, 2, "3"]));
+console.log(middle([1, 2, 3, 4, 5]));
+console.log(middle([1, 2, 3, 4, 5, 6]));
 
-const words = ["hello", "world", "lighthouse"];
+console.log(middle([1, 2]));
 
-//Verifying that the source array is not altered by the function
-without(words, ["lighthouse"]); // no need to capture return value for this test case
+//Comparing identical middle elements
 
-// Make sure the original array was not altered by the without function
-assertArraysEqual(words, ["hello", "world", "lighthouse"]);
+assertArraysEqual(
+  middle([1,2,3]),
+  middle([12,2,30])
+);
+
+//Array of different middle elements
+assertArraysEqual(
+    middle([1,25,3,10]),
+    middle([12,25,4,100])
+  );
+  
+
+//Differnt number of middle elements
+assertArraysEqual(
+    middle([1,25,3]),
+    middle([12,25,4,100])
+  );
+
