@@ -1,9 +1,15 @@
-const map = function (array, callback) {
-  const results = [];
-  for (let item of array) {
-    results.push(callback(item));
+//This function copies the array content to the output until a condition is reached
+const takeUntil = function (array, callback) {
+  const result = [];
+  for (let arrayElement of array) {
+
+    if (callback(arrayElement)) {  //Stop copying if the stop condition is met
+        break;
+    }
+      result.push(arrayElement);
+   
   }
-  return results;
+  return result;
 };
 
 //This function compares two arrays
@@ -30,7 +36,19 @@ const eqArrays = function (inputArray1, inputArray2) {
   return response;
 };
 
+
+const data1 = [1, 2, 5, 7, 2, -1, 2, 4, 5];
+const results1 = takeUntil(data1, x => x < 0);
+console.log(results1);
+
+
+const data2 = ["I've", "been", "to", "Hollywood", ",", "I've", "been", "to", "Redwood"];
+const results2 = takeUntil(data2, x => x === ',');
+console.log(results2);
+
+
 // FUNCTION IMPLEMENTATION
+
 const assertArraysEqual = function (inputArray1, inputArray2) {
   if (eqArrays(inputArray1, inputArray2)) {
     console.log(`✅ ✅ ✅ Correct: ${inputArray1} === ${inputArray2}`);
@@ -41,14 +59,20 @@ const assertArraysEqual = function (inputArray1, inputArray2) {
   }
 };
 
-const words = ["ground", "control", "to", "major", "tom"];
-const results1 = map(words, (word) => word[0]);
 
-//   console.log(results1);
 //Test examples
 
 //Passed test case
-assertArraysEqual(results1, ["g", "c", "t", "m", "t"]);
+assertArraysEqual(results1, [1, 2, 5, 7, 2]);
+
+
 
 //Failed test case
-assertArraysEqual(results1, ["g", "t", "t", "m", "t"]);
+assertArraysEqual(results1, [1, 2, 5, 7, 3]);
+
+
+//Passed test case
+assertArraysEqual(results2, ["I've", "been", "to", "Hollywood"]);
+
+//Failed test case
+assertArraysEqual(results2, ["I've", "been", "too", "Hollywood"]);
