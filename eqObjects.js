@@ -27,47 +27,6 @@ const eqObjects = function (object1, object2) {
   return result;
 };
 
-const eqArrays = function (inputArray1, inputArray2) {
-  let response = false;
-  //If each has at least one element
-  if (inputArray1.length > 0 && inputArray2.length > 0) {
-    //Array having at least one element
-    if (inputArray1.length === inputArray2.length) {
-      //Compare arrays elements one by one and stop the loop if any mismatch
-      for (let i = 0; i < inputArray1.length; i++) {
-        if (inputArray1[i] !== inputArray2[i]) {
-          response = false;
-          break;
-        } else {
-          //True if all elements are identical
-          response = true;
-        }
-      }
-    }
-  } else {
-    response = undefined;
-  }
-  return response;
-};
+module.exports=eqObjects;
 
-const assertEqual = function (actual, expected) {
-  if (actual === expected) {
-    console.log(`✅ ✅ ✅ Assertion Passed: ${actual} === ${expected}`);
-  } else {
-    console.log(`🔴 🔴 🔴 Assertion Failed: ${actual} !== ${expected}`);
-  }
-};
 
-//FUNCTION IMPLEMENTATION
-
-const course1 = { java: "OOP", c: "Non-OOP" };
-const course2 = { java: "Non-OOP", c: "OOP" };
-
-const cd = { c: "1", d: ["2", 3] };
-const dc = { d: ["2", 3], c: "1" };
-console.log(eqObjects(cd, dc));
-
-assertEqual(eqObjects(cd, dc), true);
-assertEqual(eqObjects(cd, dc), false);
-assertEqual(eqObjects(course1, course2), true);
-assertEqual(eqObjects(course1, course2), false);
