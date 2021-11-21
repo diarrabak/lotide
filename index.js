@@ -12,16 +12,16 @@ const assertEqual=require("./assertEqual");
 const assertArraysEqual=require("./assertArraysEqual");
 
 module.exports = {
-  head:   head,
-  middle: middle,
-  eqArrays:eqArrays,
-  eqObjects:eqObjects,
-  countOnly:countOnly,
+  head,
+  middle,
+  eqArrays,
+  eqObjects,
+  countOnly,
   map:map,
-  takeUntil:takeUntil,
-  without:without,
-  findKey:findKey,
-  findKeyByValue:findKeyByValue,
-  assertEqual:assertEqual,
-  assertArraysEqual:assertArraysEqual
+  takeUntil,
+  without,
+  findKey,
+  findKeyByValue,
+  assertEqual,
+  assertArraysEqual
 };
