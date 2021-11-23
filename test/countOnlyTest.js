@@ -1,34 +1,102 @@
-
 // FUNCTION IMPLEMENTATION
 
-const countOnly=require("../countOnly");
-const assertEqual = require("../assertEqual");
+const countOnly = require("../countOnly");
+const assert = require("chai").assert;
 
-  const firstNames = [
-    "Karl",
-    "Salima",
-    "Agouhanna",
-    "Fang",
-    "Kavith",
-    "Jason",
-    "Salima",
-    "Fang",
-    "Joe",
-  ];
-  
-  const result = countOnly(firstNames, {
-    Jason: true,
-    Karima: true,
-    Fang: true,
-    Agouhanna: false,
+const firstNames = [
+  "Karl",
+  "Salima",
+  "Agouhanna",
+  "Fang",
+  "Kavith",
+  "Jason",
+  "Salima",
+  "Fang",
+  "Joe",
+];
+
+const result = countOnly(firstNames, {
+  Jason: true,
+  Karima: true,
+  Fang: true,
+  Agouhanna: false,
+});
+
+describe("#countOnly", () => {
+  it("returns 1 for Jason", () => {
+    assert.strictEqual(
+      countOnly(
+        [
+          "Karl",
+          "Salima",
+          "Agouhanna",
+          "Fang",
+          "Kavith",
+          "Jason",
+          "Salima",
+          "Fang",
+          "Joe",
+        ],
+        {
+          Jason: true,
+          Karima: true,
+          Fang: true,
+          Agouhanna: false,
+        }
+      )["Jason"],
+      1
+    );
   });
-  
-  //Assertion test
-  assertEqual(result["Jason"], 1); //True
-  
-  assertEqual(result["Jason"], undefined); //False
-  
-  assertEqual(result["Karima"], undefined); //True, no Karima in the list
-  assertEqual(result["Fang"], 2); //True
-  assertEqual(result["Agouhanna"], undefined); //True since its value is set to false
-  
+
+  it("returns undefined for Karima", () => {
+    //Not the array
+    assert.strictEqual(
+      countOnly(
+        [
+          "Karl",
+          "Salima",
+          "Agouhanna",
+          "Fang",
+          "Kavith",
+          "Jason",
+          "Salima",
+          "Fang",
+          "Joe",
+        ],
+        {
+          Jason: true,
+          Karima: true,
+          Fang: true,
+          Agouhanna: false,
+        }
+      )["Karima"],
+      undefined
+    );
+  });
+
+  it("returns undefined for Agouhanna", () => {
+    //False in the count list
+    assert.strictEqual(
+      countOnly(
+        [
+          "Karl",
+          "Salima",
+          "Agouhanna",
+          "Fang",
+          "Kavith",
+          "Jason",
+          "Salima",
+          "Fang",
+          "Joe",
+        ],
+        {
+          Jason: true,
+          Karima: true,
+          Fang: true,
+          Agouhanna: false,
+        }
+      )["Agouhanna"],
+      undefined
+    );
+  });
+});
