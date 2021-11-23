@@ -2,14 +2,13 @@
 const takeUntil = function (array, callback) {
   const result = [];
   for (let arrayElement of array) {
-
-    if (callback(arrayElement)) {  //Stop copying if the stop condition is met
-        break;
+    if (callback(arrayElement)) {
+      //Stop copying if the stop condition is met
+      break;
     }
-      result.push(arrayElement);
-   
+    result.push(arrayElement);
   }
   return result;
 };
 
-module.exports=takeUntil;
+module.exports = takeUntil;

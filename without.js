@@ -12,4 +12,4 @@ const without = function (source, itemsToRemove) {
   return newArray;
 };
 
-module.exports=without;
+module.exports = without;

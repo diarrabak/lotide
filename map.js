@@ -1,3 +1,4 @@
+//This fonction maps an array using the callback conditions
 const map = function (array, callback) {
   const results = [];
   for (let item of array) {
@@ -6,5 +7,4 @@ const map = function (array, callback) {
   return results;
 };
 
-module.exports=map;
-
+module.exports = map;
